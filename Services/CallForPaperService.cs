@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using InfrastructureOrm.Model;
 using InfrastructureOrm.Model.Activity;
 using InfrastructureOrm.Repositories;
 using ModelDTO;
@@ -78,11 +74,7 @@ public class CallForPaperService : ICallForPaperService
         catch (Exception)
         {
             return false;
-            //Console.WriteLine(e);
-            throw;
         }
-
-        return true;
     }
 
     public async Task<Boolean> DeleteApplication(Guid id)
@@ -104,8 +96,6 @@ public class CallForPaperService : ICallForPaperService
         catch (Exception)
         {
             return false;
-            //Console.WriteLine(e);
-            throw;
         }
         
     }
@@ -138,7 +128,6 @@ public class CallForPaperService : ICallForPaperService
         applicationDto.Activity = new_applicationDto.Activity;
         applicationDto.Daft = new_applicationDto.Daft;
         
-        
         try
         {
             await _applicationRepository.Update(id,applicationDto);
@@ -147,8 +136,6 @@ public class CallForPaperService : ICallForPaperService
         catch (Exception)
         {
             return await _applicationRepository.FindById(id);
-            //Console.WriteLine(e);
-            throw;
         }
     }
 
@@ -185,11 +172,9 @@ public class CallForPaperService : ICallForPaperService
         {
             return await _userRepository.AddApplication((Guid)applicationDto.UserId,  applicationDto );
         }
-        catch (Exception e)
+        catch (Exception)
         {
             return null;
-            //Console.WriteLine(e);
-            throw;
         }
     }
 }

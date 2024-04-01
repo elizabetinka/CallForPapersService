@@ -23,11 +23,6 @@ public class ApplicationConfiguration: IEntityTypeConfiguration<Application>
             .Property(u => u.added_date)
             .HasDefaultValue(DateTime.Now);
         
-        //  enum в виде строки
-        //builder
-        //    .Property(i => i.activity.activity)
-        //    .HasConversion<string>();
-        //  Constraint
         builder
             .ToTable(t => t.HasCheckConstraint("ValidApplication", "user_id IS NOT NULL AND (activity IS NOT NULL  OR name IS NOT NULL OR description IS NOT NULL OR plan IS NOT NULL )"));
 
