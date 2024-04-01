@@ -13,9 +13,9 @@ cd CallForPapersService
 ```bash
 docker-compose up
 ```
-- запускаем билд (далее, чтобы использовать сервис - пишем только эту команду)
+- запускаем билд
 ```bash
-docker-compose --build
+docker-compose up --build
 ```
 - Приложение запущено. Переходим в браузер.Теперь есть два пути
 ```bash
