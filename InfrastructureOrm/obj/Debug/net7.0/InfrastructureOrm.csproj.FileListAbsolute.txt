@@ -1,0 +1,17 @@
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/InfrastructureOrm.deps.json
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/InfrastructureOrm.runtimeconfig.json
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/InfrastructureOrm.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/InfrastructureOrm.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/ModelDTO.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/bin/Debug/net7.0/ModelDTO.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.csproj.AssemblyReference.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.GeneratedMSBuildEditorConfig.editorconfig
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.AssemblyInfoInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.AssemblyInfo.cs
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.csproj.CoreCompileInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.csproj.CopyComplete
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/refint/InfrastructureOrm.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/InfrastructureOrm.genruntimeconfig.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/InfrastructureOrm/obj/Debug/net7.0/ref/InfrastructureOrm.dll

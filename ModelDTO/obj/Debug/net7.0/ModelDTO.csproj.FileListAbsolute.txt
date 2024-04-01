@@ -1,0 +1,12 @@
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/bin/Debug/net7.0/ModelDTO.deps.json
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/bin/Debug/net7.0/ModelDTO.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/bin/Debug/net7.0/ModelDTO.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.csproj.AssemblyReference.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.GeneratedMSBuildEditorConfig.editorconfig
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.AssemblyInfoInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.AssemblyInfo.cs
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.csproj.CoreCompileInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/refint/ModelDTO.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ModelDTO.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/ModelDTO/obj/Debug/net7.0/ref/ModelDTO.dll

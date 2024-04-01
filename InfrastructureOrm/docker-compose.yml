@@ -1,0 +1,26 @@
+version: "3.9"
+
+networks:
+  app-tier:
+    driver: bridge
+
+volumes:
+    postgres_data:
+
+name: "test_task_infrastructure"
+      
+services:
+  postgres:
+    container_name: test_task_postgres
+    image: postgres:14.5
+    hostname: postgres
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    networks:
+      - app-tier
