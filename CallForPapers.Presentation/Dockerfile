@@ -5,19 +5,20 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Presentation/Presentation.csproj", "Presentation/"]
-COPY ["Services/Services.csproj", "Services/"]
-COPY ["ModelDTO/ModelDTO.csproj", "ModelDTO/"]
-COPY ["InfrastructureOrm/InfrastructureOrm.csproj", "InfrastructureOrm/"]
-RUN dotnet restore "Presentation/Presentation.csproj"
+COPY ["CallForPapers.Presentation/CallForPapers.Presentation.csproj", "CallForPapers.Presentation/"]
+COPY ["CallForPapers.InfrastructureServicesDto/CallForPapers.InfrastructureServicesDto.csproj", "CallForPapers.InfrastructureServicesDto/"]
+COPY ["CallForPapers.Services/CallForPapers.Services.csproj", "CallForPapers.Services/"]
+COPY ["CallForPapers.ServicesPresentationDto/CallForPapers.ServicesPresentationDto.csproj", "CallForPapers.ServicesPresentationDto/"]
+COPY ["CallForPapers.Infrastructure/CallForPapers.Infrastructure.csproj", "CallForPapers.Infrastructure/"]
+RUN dotnet restore "CallForPapers.Presentation/CallForPapers.Presentation.csproj"
 COPY . .
-WORKDIR "/src/Presentation"
-RUN dotnet build "Presentation.csproj" -c Release -o /app/build
+WORKDIR "/src/CallForPapers.Presentation"
+RUN dotnet build "CallForPapers.Presentation.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Presentation.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CallForPapers.Presentation.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Presentation.dll"]
+ENTRYPOINT ["dotnet", "CallForPapers.Presentation.dll"]
