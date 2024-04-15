@@ -9,7 +9,7 @@ services:
     container_name: call-for-paper
     build:
       context: .
-      dockerfile: Presentation/Dockerfile
+      dockerfile: CallForPapers.Presentation/Dockerfile
     ports:
       - "80:80"
     networks:

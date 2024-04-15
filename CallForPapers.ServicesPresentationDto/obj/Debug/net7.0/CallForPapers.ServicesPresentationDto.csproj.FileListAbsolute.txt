@@ -1,0 +1,15 @@
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/bin/Debug/net7.0/CallForPapers.ServicesPresentationDto.deps.json
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/bin/Debug/net7.0/CallForPapers.ServicesPresentationDto.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/bin/Debug/net7.0/CallForPapers.ServicesPresentationDto.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/bin/Debug/net7.0/CallForPapers.InfrastructureServicesDto.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/bin/Debug/net7.0/CallForPapers.InfrastructureServicesDto.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.csproj.AssemblyReference.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.GeneratedMSBuildEditorConfig.editorconfig
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.AssemblyInfoInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.AssemblyInfo.cs
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.csproj.CoreCompileInputs.cache
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.csproj.CopyComplete
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/refint/CallForPapers.ServicesPresentationDto.dll
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/CallForPapers.ServicesPresentationDto.pdb
+/Users/indo.evri.momint/RiderProjects/WebApplication1/CallForPapers.ServicesPresentationDto/obj/Debug/net7.0/ref/CallForPapers.ServicesPresentationDto.dll

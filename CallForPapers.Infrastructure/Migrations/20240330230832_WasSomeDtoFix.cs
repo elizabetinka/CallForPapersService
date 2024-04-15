@@ -1,0 +1,39 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace CallForPapers.Infrastructure.Migrations
+{
+    /// <inheritdoc />
+    public partial class WasSomeDtoFix : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "added_date",
+                table: "applications",
+                type: "timestamp without time zone",
+                nullable: false,
+                defaultValue: new DateTime(2024, 3, 31, 2, 8, 31, 39, DateTimeKind.Local).AddTicks(1930),
+                oldClrType: typeof(DateTime),
+                oldType: "timestamp without time zone",
+                oldDefaultValue: new DateTime(2024, 3, 31, 1, 33, 56, 227, DateTimeKind.Local).AddTicks(3130));
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "added_date",
+                table: "applications",
+                type: "timestamp without time zone",
+                nullable: false,
+                defaultValue: new DateTime(2024, 3, 31, 1, 33, 56, 227, DateTimeKind.Local).AddTicks(3130),
+                oldClrType: typeof(DateTime),
+                oldType: "timestamp without time zone",
+                oldDefaultValue: new DateTime(2024, 3, 31, 2, 8, 31, 39, DateTimeKind.Local).AddTicks(1930));
+        }
+    }
+}

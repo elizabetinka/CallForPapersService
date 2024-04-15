@@ -1,100 +1,84 @@
-using InfrastructureOrm.Model;
-using InfrastructureOrm.Model.Activity;
-using InfrastructureOrm.Repositories;
-using InfrastructureOrm.Repositories.interfaces;
-using ModelDTO;
-using Services;
+using CallForPapers.Infrastructure.Model.Activity;
+using CallForPapers.Infrastructure.Repositories;
+using CallForPapers.Services;
+using CallForPapers.ServicesPresentationDto;
 using Xunit;
 
 namespace RepositoryTests;
 
 public class OtherFunctionTest
 {
-    private UserRepositoryForTest _userRepository;
-    private AdminRepositoryForTest _adminRepository;
     private ApplicationRepositoryForTest _applicationRepository;
-    private IPersonService _personService;
+    private ActivityRepository _activityRepository;
     private ICallForPaperService _callForPaperService;
 
     public OtherFunctionTest()
     {
-        _adminRepository = new AdminRepositoryForTest();
         _applicationRepository = new ApplicationRepositoryForTest();
-        _userRepository = new UserRepositoryForTest(_applicationRepository);
-        _personService = new PersonService(_adminRepository, _userRepository);
-        _callForPaperService = new CallForPaperService(_applicationRepository, _userRepository);
+        _activityRepository = new ActivityRepository();
+        _callForPaperService = new CallForPaperService(_applicationRepository,_activityRepository);
     }
+
+
     
     
     [Theory]
     [ClassData(typeof(GoodApplications))]
-    public async Task UpdateApplicationSuccess(ApplicationDTO application)
+    public async Task UpdateApplicationSuccess(CreateApplicationRequestDto application)
     {
-        ApplicationDTO applicationDto =
-            new ApplicationDTO(null, null, "name", "description", "plan", DateTime.Now, Guid.NewGuid(), true);
-        UserDTO? userDto = await _personService.RegistrUser("login", "password");
-        applicationDto.UserId = userDto.Id;
+        CreateApplicationRequestDto applicationDto =
+            new CreateApplicationRequestDto(Guid.NewGuid(), null, "name", "description", "plan");
         
-        ApplicationDTO? added = await _callForPaperService.CreateApplication(applicationDto);
+        ApplicationResponseDto added = await _callForPaperService.CreateApplication(applicationDto);
 
-        ApplicationDTO? added2 = await _callForPaperService.UpdateApplication((Guid)added.Id, application);
+        ApplicationResponseDto added2 = await _callForPaperService.UpdateApplication((Guid)added.Id, new UpdateApplicationRequestDto(application.Activity,application.Name,application.Description,application.Outline));
 
         Assert.NotNull(added2);
-        Assert.Equal(added2.Activity,ActivityMapper.GetActivityClassByString(application.Activity).activity);
+        Assert.Equal(added2.Activity,ActivityMapper.GetActivityClassByString(application.Activity)?.Activity);
         Assert.Equal(added2.Name,application.Name);
         Assert.Equal(added2.Description,application.Description);
-        Assert.Equal(added2.Plan,application.Plan);
+        Assert.Equal(added2.Outline,application.Outline);
     }
     
     [Theory]
     [ClassData(typeof(BadApplications))]
-    public async Task UpdateApplicationFailFewInfo(ApplicationDTO application)
+    public async Task UpdateApplicationFailFewInfo(CreateApplicationRequestDto application)
     {
-        ApplicationDTO applicationDto =
-            new ApplicationDTO(null, null, "name", "description", "plan", DateTime.Now, Guid.NewGuid(), true);
-        UserDTO? userDto = await _personService.RegistrUser("login", "password");
-        applicationDto.UserId = userDto.Id;
+        CreateApplicationRequestDto applicationDto =
+            new CreateApplicationRequestDto(Guid.NewGuid(), null, "name", "description", "plan");
         
-        ApplicationDTO? added = await _callForPaperService.CreateApplication(applicationDto);
+        ApplicationResponseDto added = await _callForPaperService.CreateApplication(applicationDto);
 
-        ApplicationDTO? added2 = await _callForPaperService.UpdateApplication((Guid)added.Id, application);
-        
-        Assert.Equal(added2.Activity,added.Activity);
-        Assert.Equal(added2.Name,added.Name);
-        Assert.Equal(added2.Description,added.Description);
-        Assert.Equal(added2.Plan,added.Plan);
+        var exception = await Record.ExceptionAsync(() =>  _callForPaperService.UpdateApplication((Guid)added.Id, new UpdateApplicationRequestDto(application.Activity,application.Name,application.Description,application.Outline)));
+
+        Assert.NotNull(exception);
     }
     
     [Theory]
     [ClassData(typeof(GoodApplications))]
-    public async Task UpdateApplicationFailBecouseNotDraft(ApplicationDTO application)
+    public async Task UpdateApplicationFailBecouseNotDraft(CreateApplicationRequestDto application)
     {
-        ApplicationDTO applicationDto =
-            new ApplicationDTO(null, "Report", "name", "description", "plan", DateTime.Now, Guid.NewGuid(), true);
-        UserDTO? userDto = await _personService.RegistrUser("login", "password");
-        applicationDto.UserId = userDto.Id;
+        CreateApplicationRequestDto applicationDto =
+            new CreateApplicationRequestDto(Guid.NewGuid(), "Report", "name", "description", "plan");
         
-        ApplicationDTO? added = await _callForPaperService.CreateApplication(applicationDto);
+        
+        ApplicationResponseDto added = await _callForPaperService.CreateApplication(applicationDto);
         await _callForPaperService.SendApplication((Guid)added.Id);
 
-        ApplicationDTO? added2 = await _callForPaperService.UpdateApplication((Guid)added.Id, application);
-        
-        Assert.Equal(added2.Activity,added.Activity);
-        Assert.Equal(added2.Name,added.Name);
-        Assert.Equal(added2.Description,added.Description);
-        Assert.Equal(added2.Plan,added.Plan);
+        var exception = await Record.ExceptionAsync(() => _callForPaperService.UpdateApplication((Guid)added.Id, new UpdateApplicationRequestDto(application.Activity,application.Name,application.Description,application.Outline)));
+        Assert.NotNull(exception);
+       
     }
     
     [Theory]
     [ClassData(typeof(GoodApplications))]
-    public async Task DeleteApplicationSuccess(ApplicationDTO application)
+    public async Task DeleteApplicationSuccess(CreateApplicationRequestDto application)
     {
-        UserDTO? userDto = await _personService.RegistrUser("login", "password");
-        application.UserId = userDto.Id;
+        ApplicationResponseDto added = await _callForPaperService.CreateApplication(application);
         
-        ApplicationDTO? added = await _callForPaperService.CreateApplication(application);
-
-        Assert.True(await _callForPaperService.DeleteApplication((Guid)added.Id));
+        var exception = await Record.ExceptionAsync(() =>  _callForPaperService.DeleteApplication((Guid)added.Id));
+        Assert.Null(exception);
+        
         Assert.Null(await _callForPaperService.GetApplicationById((Guid)added.Id));
         Assert.Empty(_applicationRepository.Applications);
     }
@@ -102,22 +86,22 @@ public class OtherFunctionTest
     [Fact]
     public async Task DeleteApplicationFailBecuseDraft()
     {
-        ApplicationDTO application = new ApplicationDTO(null, "Report", "name", null, "plan", DateTime.Now,
-            Guid.NewGuid(), true);
-        UserDTO? userDto = await _personService.RegistrUser("login", "password");
-        application.UserId = userDto.Id;
+        CreateApplicationRequestDto application = new CreateApplicationRequestDto(Guid.NewGuid(), "Report", "name", null, "plan");
+      
         
-        ApplicationDTO? added = await _callForPaperService.CreateApplication(application);
+        ApplicationResponseDto added = await _callForPaperService.CreateApplication(application);
         await _callForPaperService.SendApplication((Guid)added.Id);
         
-        Assert.False(await _callForPaperService.DeleteApplication((Guid)added.Id));
+        var exception = await Record.ExceptionAsync(() =>  _callForPaperService.DeleteApplication((Guid)added.Id));
+        Assert.NotNull(exception);
         Assert.Single(_applicationRepository.Applications);
     }
     
     [Theory]
     [ClassData(typeof(GoodApplications))]
-    public async Task DeleteApplicationFailBecuseDonHave(ApplicationDTO application)
+    public async Task DeleteApplicationFailBecuseDonHave(CreateApplicationRequestDto application)
     {
-        Assert.False(await _callForPaperService.DeleteApplication((Guid)application.Id));
+        var exception = await Record.ExceptionAsync(() =>_callForPaperService.DeleteApplication((Guid)application.Author)); // типа рандомные Id
+        Assert.NotNull(exception);
     }
 }

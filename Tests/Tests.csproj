@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\InfrastructureOrm\InfrastructureOrm.csproj" />
-      <ProjectReference Include="..\Services\Services.csproj" />
+      <ProjectReference Include="..\CallForPapers.Infrastructure\CallForPapers.Infrastructure.csproj" />
+      <ProjectReference Include="..\CallForPapers.Services\CallForPapers.Services.csproj" />
     </ItemGroup>
 
 
